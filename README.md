@@ -1,3 +1,3 @@
-# [2048](http://zer0rei.github.io/2048)
+# 2048-Ai  [WiP]
 
-The [2048](http://zer0rei.github.io/2048) game in vanilla javascript
+Implementing an ANN in 2048. This repository was used for the base game: https://github.com/zer0rei/2048

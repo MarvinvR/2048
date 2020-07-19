@@ -11,6 +11,8 @@ var keyCodes = {
 	74: "down"
 };
 
+var gameInstance = null
+
 // 2048 GAME CLASS //
 // // // // // // //
 function Game(display, rows, cols) {
@@ -28,6 +30,7 @@ function Game(display, rows, cols) {
 	this.ended = false;
 	this.paused = false;
 	this.display = display;
+	this.highestTile = 0
 }
 
 Game.prototype.clear = function() {
@@ -179,6 +182,9 @@ Game.prototype.checkResult = function() {
 	var highestTile = 0;
 	this.plan.forEach(function(row) {
 		row.forEach(function(val) {
+			if(val > this.highestTile) {
+				this.highestTile = val
+			}
 			if (val === this.goal) {
 				this.pause(0);
 				this.display.result(1, this.goal);
@@ -404,6 +410,8 @@ window.onload = function() {
 	// // // // //
 	var myGame = new Game(new DOMDisplay());
 	myGame.start();
+
+	gameInstance = myGame
 
 	// "How to play" message
 	var messageDisplay = document.querySelector("#message-box");
